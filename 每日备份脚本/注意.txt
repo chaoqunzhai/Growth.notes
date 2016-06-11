@@ -1,0 +1,1 @@
+  把 pscp.exe 放置到C:\Windows\System32。这样在dos命令窗口中能直接调用使用了。
