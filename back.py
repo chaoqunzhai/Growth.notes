@@ -53,7 +53,7 @@ while is_next==True:
 	pass
 #print row
 #print '\033[5m\033[31m%s\033[0m\033[0m' %row
-##添加小内容
+##添加小内容##
 inflow=input('\033[31m随机输入数字，查看表格状态: \033[0m')
 if inflow >= 10:
 	print '\033[5m\033[31m%s\033[0m\033[0m' %row
