@@ -7,6 +7,7 @@ import os,sys
 from itertools import islice
 from prettytable import PrettyTable
 date=time.strftime('%Y-%m-%d')
+date2=time.strftime('%Y%m%d')
 local='/Backup/'
 ''''''
 auth = oss2.Auth('BSRuM880nKPExyhn','wucVG4OqpuCiYSouyU3ca0XtuMK48O')
@@ -18,20 +19,26 @@ row.field_names=["备份目录","文件名称","文件MIME类型","文件类型"
 is_next=True
 try:
         new=local+date
-        if local==True:
+        if os.path.exists(local)==True:
                 os.mkdir(new)
                 print new
         else:
                 os.mkdir(local)
                 os.mkdir(new)
                 print new
+
 except OSError:
                 print '\033[33mFile exists:文件已经存在\033[0m'
 finally:
 	print '\033[36m===输出表格中====\033[0m'
+
 while is_next==True:
-	c=bucket.list_objects('ev_201603111250','',marker,2)
-	#print c.object_list
+#	modo='ev_'+date2
+#	print modo,date2
+	c=bucket.list_objects('ev_'+date2,'',marker,2)
+	print c.object_list
+	break
+'''
 	marker=c.next_marker
 	is_next=c.is_truncated #使用了分页罗列函数
 	for b in c.object_list:
@@ -59,3 +66,4 @@ if inflow >= 10:
 	print '\033[5m\033[31m%s\033[0m\033[0m' %row
 else:
 	print '\033[35m%s\033[0m' %row
+'''
