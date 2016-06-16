@@ -10,8 +10,8 @@ date=time.strftime('%Y-%m-%d')
 date2=time.strftime('%Y%m%d')
 local='/Backup/'
 ''''''
-auth = oss2.Auth('BSRuM880nKPExyhn','wucVG4OqpuCiYSouyU3ca0XtuMK48O')
-bucket = oss2.Bucket(auth,'oss-cn-beijing.aliyuncs.com','evimage')
+auth = oss2.Auth('','') 填写对应的key号
+bucket = oss2.Bucket(auth,'oss-cn-beijing.aliyuncs.com','') 填写对应的仓库名称
 new=''
 marker='' #初始化变量，从空值开始。这里设置目的为下次循环赋值
 row=PrettyTable()  #实例化第一个参数
