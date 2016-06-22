@@ -8,10 +8,13 @@ from itertools import islice
 from prettytable import PrettyTable
 date=time.strftime('%Y-%m-%d')
 date2=time.strftime('%Y%m%d')
+date3=10
+date4=int(date2)-int(date3)
+date4=bytes(date4)
 local='/Backup/'
 ''''''
-auth = oss2.Auth('','') 填写对应的key号
-bucket = oss2.Bucket(auth,'oss-cn-beijing.aliyuncs.com','') 填写对应的仓库名称
+auth = oss2.Auth('BSRuM880nKPExyhn','wucVG4OqpuCiYSouyU3ca0XtuMK48O')
+bucket = oss2.Bucket(auth,'oss-cn-beijing.aliyuncs.com','evimage')
 new=''
 marker='' #初始化变量，从空值开始。这里设置目的为下次循环赋值
 row=PrettyTable()  #实例化第一个参数
@@ -33,7 +36,7 @@ finally:
 	print '\033[36m===输出表格中====\033[0m'
 try:
 	while is_next==True:
-		cloud='ev_'+date2
+		cloud='ev_'+date2 and 'ev_'+date4
 #		print cloud,date2
 		c=bucket.list_objects(cloud,'',marker,2)
 #		print c.object_list
@@ -59,7 +62,7 @@ try:
 #	print '文件最后修改时间为:%s' %(utime())
 	row.add_row([cloud,'/Backup/',cluser,b.content_type,b.object_type,utime()])
 except NameError:
-	print "\033[33m不存日期文件，空列表输出\033[0m"
+	print "\033[33m不存在日期文件，空列表输出\033[0m"
 	pass
 #print row
 #print '\033[5m\033[31m%s\033[0m\033[0m' %row
