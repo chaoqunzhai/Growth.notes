@@ -8,9 +8,17 @@ from itertools import islice
 from prettytable import PrettyTable
 date=time.strftime('%Y-%m-%d')
 date2=time.strftime('%Y%m%d')
-date3=10
-date4=int(date2)-int(date3)
-date4=bytes(date4)
+while True:
+	date3=raw_input('\033[36m可选择前几天的数据并下载，请输入天数：\033[0m')
+	if date3==date3:
+		try:
+			date4=int(date2)-int(date3)
+			date4=bytes(date4)
+			break
+		except ValueError:
+			print '\033[31m请输入数字，数字最好小于30\033[0m'
+	else:
+		break
 local='/Backup/'
 ''''''
 auth = oss2.Auth('BSRuM880nKPExyhn','wucVG4OqpuCiYSouyU3ca0XtuMK48O')
@@ -60,14 +68,14 @@ try:
 		atime=b.last_modified
 		return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(atime))
 #	print '文件最后修改时间为:%s' %(utime())
-	row.add_row([cloud,'/Backup/',cluser,b.content_type,b.object_type,utime()])
+	row.add_row([cloud,new,cluser,b.content_type,b.object_type,utime()])
 except NameError:
 	print "\033[33m不存在日期文件，空列表输出\033[0m"
 	pass
 #print row
 #print '\033[5m\033[31m%s\033[0m\033[0m' %row
 ##添加小内容##
-inflow=input('\033[31m随机输入数字，查看表格状态: \033[0m')
+inflow=input('\033[31m存在图片数据，随机输入数字，查看表格状态: \033[0m')
 if inflow >= 10:
 	print '\033[5m\033[31m%s\033[0m\033[0m' %row
 else:
