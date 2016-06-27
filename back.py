@@ -9,15 +9,22 @@ from prettytable import PrettyTable
 date=time.strftime('%Y-%m-%d')
 date2=time.strftime('%Y%m%d')
 while True:
-	date3=raw_input('\033[36m可选择前几天的数据并下载，请输入天数：\033[0m')
-	if date3==date3:
-		try:
-			date4=int(date2)-int(date3)
-			date4=bytes(date4)
+	try:
+		date3=raw_input('\033[36m可选择前几天的数据并下载，请输入天数：\033[0m')
+		if date3==date3:
+			try:
+				date4=int(date2)-int(date3)
+				date4=bytes(date4)
+				break
+			except ValueError:
+				print '\033[31m请输入数字，数字最好小于30\033[0m'
+#		elif date3==0:
+#			break
+		else:
 			break
-		except ValueError:
-			print '\033[31m请输入数字，数字最好小于30\033[0m'
-	else:
+	except KeyboardInterrupt:
+		print '\033[35m您强制终止了程序!!!\033[0m'
+		sys.exit()
 		break
 local='/Backup/'
 ''''''
