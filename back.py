@@ -20,6 +20,7 @@ while True:
 				print '\033[31m请输入数字，数字最好小于30\033[0m'
 #		elif date3==0:
 #			break
+#
 		else:
 			break
 	except KeyboardInterrupt:
